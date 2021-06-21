@@ -177,11 +177,6 @@ function mljflux_run_model(df, holdout_frac, hidden_layers, input_loss, opt, n_e
 	)
 end
 
-opt_dict = Dict([
-	("momentum", Momentum(η, ρ)),
-	("adam", ADAM(η, (β₁, β₂)))
-])
-
 # assuming 'atlas_data.csv' is in the same folder
 filepath = joinpath(pwd(), "atlas_data.csv")
 
@@ -218,6 +213,11 @@ N_rows = 20000
 
 # fraction of dataset for training (in Flux) or holdout fraction (in MLJFlux)
 frac = 0.7
+
+opt_dict = Dict([
+	("momentum", Momentum(η, ρ)),
+	("adam", ADAM(η, (β₁, β₂)))
+])
 
 #
 # FLUX-----------------------------------------------------------------------------------------------------------------
